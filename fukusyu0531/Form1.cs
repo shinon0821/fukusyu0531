@@ -36,15 +36,20 @@ namespace fukusyu0531
             {
                 vy = -vy;
             }
-            if (label1.Left >= 470)
+            if (label1.Left >= ClientSize.Width)
             {
                 vx = -vx;
             }
-            if (label1.Top >= 400)
+            if (label1.Top >= ClientSize.Height)
             {
                 vy = -vy;
-                vy = vy;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("" + ClientSize.Width + "," + ClientSize.Height);
+            MessageBox.Show("" + label1.Width + "," + label1.Height);
         }
     }
 }
