@@ -14,6 +14,7 @@ namespace fukusyu0531
     {
         int vx = -10;
         int vy = -5;
+        int iTime = 0;
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +27,15 @@ namespace fukusyu0531
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Text = MousePosition.X + "," + MousePosition.Y;
+            Point p = PointToClient(MousePosition);
+
+            label2.Left += p.X;
+            label2.Top += p.Y;
+
             label1.Left += vx;
             label1.Top += vy;
+
             if (label1.Left <= 0)
             {
                 vx = -vx;
@@ -36,20 +44,35 @@ namespace fukusyu0531
             {
                 vy = -vy;
             }
-            if (label1.Left >= ClientSize.Width)
+            if (label1.Left >= ClientSize.Width-label1.Width)
             {
-                vx = -vx;
+                vx = -Math.Abs(-vx);
             }
-            if (label1.Top >= ClientSize.Height)
+            if (label1.Top >= ClientSize.Height-label1.Height)
             {
-                vy = -vy;
+                vy = -Math.Abs(-vy);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("" + ClientSize.Width + "," + ClientSize.Height);
-            MessageBox.Show("" + label1.Width + "," + label1.Height);
+            //MessageBox.Show("" + ClientSize.Width + "," + ClientSize.Height);
+           //MessageBox.Show("" + label1.Width + "," + label1.Height);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
 }
